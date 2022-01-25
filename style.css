@@ -3,12 +3,20 @@
   --green-color: #08b295;
   --dark-color: #5a6474;
 }
+html {
+  overflow-y: hidden;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
 body {
-  background-color: var(--bg-color);
+  background-color: var(--bg-color) !important;
   font-family: "DM Sans", sans-serif !important;
 }
 .bg-color {
   background-color: var(--bg-color);
+}
+.action-now {
+  color: var(--green-color);
 }
 .navbar-row {
   flex-direction: row !important;
@@ -20,6 +28,10 @@ body {
 .img-profile {
   height: 45px;
   width: 45px;
+}
+.img-fiend {
+  height: 55px;
+  width: 55px;
 }
 #dark-mode {
   cursor: pointer;
@@ -38,6 +50,12 @@ img {
   position: relative;
   margin-right: 15px;
 }
+.avatar-chats {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  margin-right: 15px;
+}
 .status-circle {
   width: 15px;
   height: 15px;
@@ -48,12 +66,51 @@ img {
   right: 0;
   position: absolute;
 }
+.container-fluid {
+  padding-right: 0px !important;
+}
 .bd-radius {
   border-radius: 8px !important;
 }
 .chats {
   padding: 24px;
+  overflow-y: auto;
+  height: 70vh;
 }
 .search-chats {
   padding: 12px;
+}
+.btn-chats {
+  color: #08b295;
+}
+.btn-chats:hover {
+  color: #0d6efd;
+}
+.more-options {
+  position: absolute;
+  right: 15px;
+}
+.header-chats {
+  position: fixed;
+  top: 0;
+  width: 65%;
+  margin-top: 70px;
+}
+.message {
+  position: fixed;
+  bottom: 0;
+  width: 65%;
+  margin-bottom: 25px;
+}
+.chat-content {
+  overflow-y: auto;
+  height: 68vh;
+  margin-top: 100px;
+}
+.message-content {
+  padding: 1.125rem;
+  width: 60%;
+}
+.border-chats {
+  border-radius: 8px;
 }
