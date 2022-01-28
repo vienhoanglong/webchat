@@ -15,34 +15,36 @@
 <body>
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
-            <div class="container-fluid ">
-                <a class="navbar-brand fw-bold text-primary" href="#">WEB CHAT</a>
-                <ul class="navbar-nav navbar-row">  
-                    <img class="img-profile rounded-circle shadow border-1" src="/images/avatar.png">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vien Hoang Long </a>
-                       
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li>
-                                <a class="dropdown-item">
-                                    <div class="form-check form-switch">
-                                        <span class="form-check-label" for="dark-mode"> Dark mode</label>
-                                        <input class="form-check-input" type="checkbox" id="dark-mode">
-                                    </div>
-                                </a>
-                            </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i>  Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>  Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="navbar-expand mb-1">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm sticky-top">
+                <div class="container-fluid ">
+                    <a class="navbar-brand fw-bold text-primary" href="#">WEB CHAT</a>
+                    <ul class="navbar-nav navbar-row">  
+                        <img class="img-profile rounded-circle shadow border-1" src="/images/avatar.png">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vien Hoang Long </a>
+                           
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item">
+                                        <div class="form-check form-switch">
+                                            <span class="form-check-label" for="dark-mode"> Dark mode</label>
+                                            <input class="form-check-input" type="checkbox" id="dark-mode">
+                                        </div>
+                                    </a>
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user"></i>  Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i>  Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <!-- Navbar -->
         <div class="container-fluid row">
             <!-- Chats -->
-            <div class="col-4 bg-color">
+            <div class="col-3 bg-color">
                 <div class="p-3">
                     <h4 class="fw-bold mb-0">Chats</h4>
                 </div>
@@ -221,23 +223,115 @@
                 </div>    
             </div>
             <!-- Chats-->
+            <!--  -->
+            <!-- Content chats -->
             <div class="col bg-white">
-               <div class="p-3 border-bottom d-flex header-chats">
+               <div class="p-3 border-bottom d-flex inbox">
                     <div class="avatar-chats flex-shrink-0">
                         <img src="/images/img1.jpeg" class="img-friend" alt="...">
                         <div class='status-circle'></div>
                     </div>
-                   <div class="">
+                    <div class="">
                        <h5>Nguyen Cong Hau</h5>
                        <span class="action-now">Action now</span>
-                   </div>
-                   <div class="more-options">
+                    </div>
+                    <div class="more-options">
                        <button type="button" class="bg-white border-0 btn-lg btn-chats"><i class="fas fa-phone"></i></button>
                        <button type="button" class="bg-white border-0 btn-lg btn-chats"><i class="fas fa-video"></i></button>
-                       <button type="button" class="bg-white border-0 btn-lg btn-chats"><i class="fas fa-info-circle"></i></button>
-                   </div>
+                       <button type="button" class="bg-white border-0 btn-lg btn-chats btn-information"><i class="fas fa-info-circle"></i></button>
+                    </div>
+               </div>
+               <div>
+                <div class="input-group search-chats d-none" id="search-chats">
+                    <div class="input-group-append">
+                        <div class="btn bg-white border border-end-0">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <input type="search" class="form-control border-start-0 border" placeholder="Search for messages..." aria-label="Search for messages">
+                    <div class="input-group-append" id="close-search">
+                        <button class="btn bg-white border border-start-0">
+                            <i class="fas fa-close"></i>
+                        </button>
+                    </div>
+                </div>
                </div>
                <div class="chat-content">
+                    <div class="d-flex p-3">
+                        <a class="avatar" href="#" >
+                            <img class="img-profile" src="/images/avatar.png" alt="">
+                        </a>   
+                        <div class="message-row">
+                            <div class="d-flex align-items-center">
+                                <div class="message-content bg-light border-chats">
+                                    <h6 class="mb-2">Nguyen Cong Hau</h6>
+                                    <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nobis sunt numquam vel repellendus id adipisci doloremque, sapiente tempore repudiandae recusandae quidem rem nam possimus ea mollitia incidunt temporibus blanditiis.</div>
+                                    <div class="mt-1">
+                                        <small class="opacity-75">8 mins ago</small>
+                                    </div>
+                                </div>
+                                <div class="dropdown">
+                                    <a class="opacity-75 ml-3 text-dark" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v p-3"></i>
+                                    </a>
+                                    <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuLink">
+                                        <li> 
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-edit"></i>  Edit 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-share"></i> Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex p-3 float-end">
+                        <div class="message-row">
+                            <div class="d-flex align-items-center text-end">
+                                <div class="dropdown">
+                                    <a class="text-dark opacity-75 ml-3" href="#" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v p-3"></i>
+                                    </a>
+                                    <ul class="dropdown-menu bg-white" aria-labelledby="dropdownMenuLink">
+                                        <li> 
+                                            <a class="dropdown-item" href="#">
+                                              <i class="fas fa-edit"></i>  Edit 
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-share"></i> Share
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div> 
+                                <div class="message-content bg-primary text-white border-chats">
+                                    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quasi molestias architecto voluptatibus ad quis ea ratione, eum in amet, molestiae nostrum dolorem dignissimos quo doloremque dolorum reiciendis fuga consequuntur.</div>
+                                    <div class="mt-1 ">
+                                        <small class="opacity-65">8 mins ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="avatar" href="#" >
+                            <img class="img-profile" src="/images/avatar.png" alt="">
+                        </a>   
+                    </div>
                     <div class="d-flex p-3">
                         <a class="avatar avatar-sm mr-4 mr-lg-5" href="#" >
                             <img class="img-profile" src="/images/avatar.png" alt="">
@@ -263,31 +357,31 @@
                         </div>
                     </div>
                     <div class="d-flex p-3">
+                        <a class="avatar avatar-sm mr-4 mr-lg-5" href="#" >
+                            <img class="img-profile" src="/images/avatar.png" alt="">
+                        </a>
                         <div class="">
                             <div class="message-row">
-                                <div class="d-flex align-items-center justify-content-end text-end">
-                                    <div class="dropdown">
-                                        <a class="text-muted opacity-60 mr-3" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v p-3"></i>
-                                        </a>
-                                    </div>
-                                    <div class="message-content bg-primary text-white border-chats">
-                                        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quasi molestias architecto voluptatibus ad quis ea ratione, eum in amet, molestiae nostrum dolorem dignissimos quo doloremque dolorum reiciendis fuga consequuntur.</div>
-                                        <div class="mt-1 ">
+                                <div class="d-flex align-items-center">
+                                    <div class="message-content bg-light border-chats">
+                                        <h6 class="mb-2">Nguyen Cong Hau</h6>
+                                        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi nobis sunt numquam vel repellendus id adipisci doloremque, sapiente tempore repudiandae recusandae quidem rem nam possimus ea mollitia incidunt temporibus blanditiis.</div>
+                                        <div class="mt-1">
                                             <small class="opacity-65">8 mins ago</small>
                                         </div>
                                     </div>
-
+                
+                                    <div class="dropdown">
+                                        <a class="text-muted opacity-60 ml-3" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v p-3"></i>
+                                        </a>    
+                                    </div>
                                 </div>
-                               
                             </div>
-                           
-                          
                         </div>
-                       
                     </div>
                </div>
-               <div class="message border-top col ">
+               <div class="message border-top col">
                     <div class="message-content input-group">
                         <button type="button" class="bg-white border-0 btn-lg btn-chats"><i class="fas fa-plus"></i></button>
                         <button type="button" class="bg-white border-0 btn-lg btn-chats"><i class="fas fa-image"></i></button>
@@ -298,7 +392,106 @@
                     </div>
                </div>
             </div>
+            <!-- Content chats -->
+            <!--  -->
+            <!-- Tongle more info -->
+            <div class="col-3" id="more-option-area">
+                <div class="text-center mt-3 border-bottom">
+                    <div class="avatar-info">
+                        <img src="/images/img1.jpeg"  alt="...">
+                        <div class='status-circle-info'></div>
+                    </div>
+                    <div class="mt-4 mb-4">
+                        <h5>Nguyen Cong Hau</h5>
+                    </div>
+                </div>
+                <div class="mt-4 btn-more">
+                    <div class="btn d-flex justify-content-between align-items-center" id="search_chats">
+                        <span>Search in conversation</span>
+                        <i class="fas fa-search"></i>
+                    </div>   
+                </div>
+                <div class="mt-4 btn-more">
+                    <div class="btn  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#media_more" role="button" aria-expanded="false" aria-controls="media_more">
+                        <span>Photos & Video</span>
+                        <i class="fas fa-image"></i>
+                    </div>   
+                </div>
+                <div class="col">
+                    <div class="collapse multi-collapse" id="media_more">
+                      <div class="card card-body">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Photos</span>
+                            <a>See all</a>
+                        </div>
+                        <div class="text-center">
+                            <img src="./images/img1.jpeg" class="picture-more">
+                            <img src="./images/img1.jpeg" class="picture-more">
+                            <img src="./images/img1.jpeg" class="picture-more">
+                        </div>
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Videos</span>
+                            <a>See all</a>
+                        </div>
+                        <div class="text-center">
+                            <video src="/videos/beach.mp4" class="video-more" controls></video>
+                            <video src="/videos/beach.mp4" class="video-more" controls></video>
+                            <video src="/videos/beach.mp4" class="video-more" controls></video>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="mt-4 btn-more"  data-bs-toggle="modal" data-bs-target="#delete_chats">
+                    <div class="btn d-flex justify-content-between align-items-center">
+                        <span>Mute notifications</span>
+                        <i class="fas fa-bell"></i>
+                    </div>   
+                </div>
+                <div class="mt-4 btn-more" data-bs-toggle="modal" data-bs-target="#block_friend">
+                    <div class="btn d-flex justify-content-between align-items-center">
+                        <span>Block friend</span>
+                        <i class="fas fa-ban"></i>
+                    </div>   
+                </div>
+            </div>
+             <!-- Tongle more info -->
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="block_friend" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Block friend</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <h6 class="text-center">Are you sure you want to block this friend?</h6>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-primary">Yes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade" id="delete_chats" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Delete chats</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <h6 class="text-center">Are you sure you want to delete this chat?</h6>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-primary">Yes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- Modal -->
     </div>
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
