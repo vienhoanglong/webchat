@@ -1,12 +1,15 @@
-const button = document.querySelector('#btn-emoji');
+const buttonEmoji = document.querySelector('#btn-emoji');
 
 const picker = new EmojiButton();
 picker.on('emoji', emoji => {
     document.querySelector('#textarea').value += emoji;
   });
-button.addEventListener('click', () => {
-  picker.togglePicker(button);
-});
+ if(buttonEmoji){
+  buttonEmoji.addEventListener('click', () => {
+    picker.togglePicker(buttonEmoji);
+  
+  });
+ }
 $('#search_chats').click(function(){
   $('#search-chats').hasClass('d-none') ? $('#search-chats').removeClass('d-none') : $('#search-chats').addClass('d-none');
 })
@@ -34,11 +37,28 @@ const disableDarkMode = () => {
 if (darkMode === 'enabled') {
   enableDarkMode();
 }
-darkModeToggle.addEventListener('click', () => {
-  darkMode = localStorage.getItem('darkMode'); 
-  if (darkMode !== 'enabled') {
-    enableDarkMode();
-  } else {  
-    disableDarkMode(); 
-  }
-});
+if(darkModeToggle){
+  darkModeToggle.addEventListener('click', () => {
+    darkMode = localStorage.getItem('darkMode'); 
+    if (darkMode !== 'enabled') {
+      enableDarkMode();
+    } else {  
+      disableDarkMode(); 
+    }
+  });
+}
+//Sign up
+const signUpButton = document.querySelector('#signUp');
+const signInButton = document.querySelector('#signIn');
+const container = document.querySelector('#container-sign');
+
+if(signUpButton){
+  signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+  });
+}
+if(signInButton){
+  signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+  });
+}
