@@ -62,13 +62,4 @@ if(signInButton){
     container.classList.remove("right-panel-active");
   });
 }
-=======
-darkModeToggle.addEventListener('click', () => {
-  darkMode = localStorage.getItem('darkMode'); 
-  if (darkMode !== 'enabled') {
-    enableDarkMode();
-  } else {  
-    disableDarkMode(); 
-  }
-});
 

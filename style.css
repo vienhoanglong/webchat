@@ -33,7 +33,7 @@
   --bg-scrollbar-thumb: #3d3d53;
 }
 html {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   overflow-x: hidden;
 }
 body {
@@ -41,13 +41,18 @@ body {
   font-family: "DM Sans", sans-serif !important;
   color: var(--text-color) !important;
 }
+p,
+h4 {
+  color: var(--gray-color) !important;
+}
 .bg-color {
   background-color: var(--bg-color) !important;
 }
 .bg-color-white {
   background-color: var(--bg-white) !important;
 }
-.bg-message {
+.bg-message,
+.bg-friend {
   background-color: var(--bg-message) !important;
 }
 .bg-button {
@@ -207,15 +212,18 @@ img {
   background-color: var(--bg-hover) !important;
 }
 /* Scrollbar */
+::-webkit-scrollbar,
 .chat-content::-webkit-scrollbar,
 .chats::-webkit-scrollbar {
   width: 8px;
 }
+::-webkit-scrollbar-thumb,
 .chat-content::-webkit-scrollbar-thumb,
 .chats::-webkit-scrollbar-thumb {
   background-color: var(--bg-scrollbar-thumb);
   border-radius: 8px;
 }
+::-webkit-scrollbar-track,
 .chat-content::-webkit-scrollbar-track,
 .chats::-webkit-scrollbar-track {
   background-color: var(--bg-scrollbar-track);
@@ -456,7 +464,7 @@ form.sign {
 .profile-info-list > li.title {
   font-size: 0.625rem;
   font-weight: 700;
-  color: #8a8a8f;
+  color: var(--gray-color);
   padding: 0 0 0.3125rem;
 }
 .profile-info-list > li + li.title {
@@ -469,7 +477,7 @@ form.sign {
   font-weight: 700;
 }
 .profile-info-list > li .value {
-  color: #666;
+  color: var(--text-color);
 }
 .profile-info-list > li.img-list a {
   display: inline-block;
@@ -500,13 +508,14 @@ form.sign {
   padding-top: 1.5625rem;
 }
 .table.table-profile .field {
-  color: #666;
+  color: var(--gray-color);
   font-weight: 600;
   width: 25%;
   text-align: right;
 }
 .table.table-profile .value {
   font-weight: 500;
+  color: var(--gray-color);
 }
 .profile-header {
   position: relative;
@@ -528,9 +537,14 @@ form.sign {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25) 0,
+    rgba(0, 0, 0, 0.85) 100%
+  );
   border-radius: 10px;
 }
+
 .profile-header .profile-header-content,
 .profile-header .profile-header-tab,
 .profile-header-img,
@@ -542,7 +556,6 @@ body .fc-icon {
   list-style-type: none;
   margin: -1.25rem 0 0;
   padding: 0 0 0 8.75rem;
-  border-bottom: 1px solid #c8c7cc;
   white-space: nowrap;
 }
 .profile-header .profile-header-tab > li {
@@ -600,45 +613,45 @@ body .fc-widget-header a {
 }
 @media (max-width: 967px) {
   .profile-header-img {
-      width: 5.625rem;
-      height: 5.625rem;
-      margin: 0;
+    width: 5.625rem;
+    height: 5.625rem;
+    margin: 0;
   }
   .profile-header-info {
-      margin-left: 6.5625rem;
-      padding-bottom: 0.9375rem;
+    margin-left: 6.5625rem;
+    padding-bottom: 0.9375rem;
   }
   .profile-header .profile-header-tab {
-      padding-left: 0;
+    padding-left: 0;
   }
 }
 @media (max-width: 767px) {
   .profile-header .profile-header-cover {
-      background-position: top;
+    background-position: top;
   }
   .profile-header-img {
-      width: 3.75rem;
-      height: 3.75rem;
-      margin: 0;
+    width: 3.75rem;
+    height: 3.75rem;
+    margin: 0;
   }
   .profile-header-info {
-      margin-left: 4.6875rem;
-      padding-bottom: 0.9375rem;
+    margin-left: 4.6875rem;
+    padding-bottom: 0.9375rem;
   }
   .profile-header-info h4 {
-      margin: 0 0 0.3125rem;
+    margin: 0 0 0.3125rem;
   }
   .profile-header .profile-header-tab {
-      white-space: nowrap;
-      overflow: scroll;
-      padding: 0;
+    white-space: nowrap;
+    overflow: scroll;
+    padding: 0;
   }
   .profile-container {
-      padding: 0.9375rem 0.9375rem 3.6875rem;
+    padding: 0.9375rem 0.9375rem 3.6875rem;
   }
   .friend-list > li {
-      float: none;
-      width: auto;
+    float: none;
+    width: auto;
   }
 }
 .profile-info-list {
@@ -667,7 +680,7 @@ body .fc-widget-header a {
   font-weight: 700;
 }
 .profile-info-list > li .value {
-  color: #666;
+  color: var(--gray-color);
 }
 .profile-info-list > li.img-list a {
   display: inline-block;
@@ -687,7 +700,7 @@ body .fc-widget-header a {
 }
 .table.table-profile th {
   border: none;
-  color: #000;
+  color: var(--gray-color);
   padding-bottom: 0.3125rem;
   padding-top: 0;
 }
@@ -698,7 +711,7 @@ body .fc-widget-header a {
   padding-top: 1.5625rem;
 }
 .table.table-profile .field {
-  color: #666;
+  color: var(--gray-color);
   font-weight: 600;
   width: 25%;
   text-align: right;
@@ -744,6 +757,6 @@ body .fc-widget-header a {
   font-weight: 600;
 }
 .friend-list .friend-info p {
-  color: #666;
+  color: var(--gray-color);
   margin: 0;
 }
