@@ -522,7 +522,7 @@ form.sign {
   overflow: hidden;
 }
 .profile-header .profile-header-cover {
-  background: url(https://bootdey.com/img/Content/bg1.jpg) center no-repeat;
+  background: url(./images/bg1.jpg) center no-repeat;
   background-size: 100% auto;
   position: absolute;
   left: 0;
@@ -759,4 +759,14 @@ body .fc-widget-header a {
 .friend-list .friend-info p {
   color: var(--gray-color);
   margin: 0;
+}
+#btn-edit-profile {
+  color: var(--gray-color);
+}
+#btn-edit-profile:hover {
+  color: #007aff;
+  background-color: #c8c7cc;
+}
+.a-social {
+  color: var(--gray-color);
 }

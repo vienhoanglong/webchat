@@ -13,254 +13,245 @@
     <title>Profile</title>
 </head>
 <body>
-
-    <div class="container">
-        <div id="content" class="content p-0">
-            <div class="profile-header" style="border-radius: 10px;">
-                <div class="profile-header-cover"></div>
-        
-                <div class="profile-header-content">
-                    <div class="profile-header-img rounded-circle">
-                        <img src="/images/avatar.png" alt="" />
-                    </div>
-        
-                    <div class="profile-header-info">
-                        <h4 class="m-t-sm">Tran Hoang Long</h4>
-                        <p class="m-b-sm">UXUI + Frontend Developer</p>
-                        <a href="#" class="btn btn-xs btn-primary mb-3">Change avatar</a>
-                    </div>
-                </div>
-        
-                
-            </div>
-            <div class="mt-2">
-                <ul class="profile-header-tab nav nav-tabs mb-5">
-
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" >About</button>
-                        <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" >Friends</button>
-
-                    </div>
-                </ul>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div class="tab-content col-7" id="nav-tabContent">
-                    <div class="tab-pane fade" id="nav-home" role="tabpanel">
-                        <div class="tab-pane fade active show" id="profile-friends">
-                            <div class="m-b-10"><b>Friend List (2)</b></div>
-
-                            <ul class="friend-list clearfix">
-            
+    <div class="wraper">
+        <div class="navbar-expand mb-1">
+            <nav class="navbar navbar-expand-lg bg-color shadow-sm sticky-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand fw-bold text-primary" href="./index.html">
+                        <img src="./images/logo/logo.svg" alt="message chat" class="logo">
+                    </a>
+                    <ul class="navbar-nav navbar-row mx-2">  
+                        <img class="img-profile rounded-circle shadow border-1" src="/images/avatar.png">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle fw-bold text-color" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vien Hoang Long </a>
+                           
+                            <ul class="dropdown-menu dropdown-menu-end bg-message" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a href="#" class="card card-shadow bg-friend">
-                                        <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" /></div>
-                                        <div class="friend-info">
-                                            <h4>Ithamar Silvio</h4>
-                                            <p>1,923 friends</p>
+                                    <a class="dropdown-item text-color">
+                                        <div id="dark-mode-toggle" class="dark-mode-toggle">
+                                            <i class="fas fa-adjust"></i>
+                                            <span class="form-check-label" for="dark-mode"> Dark mode</span>
                                         </div>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#" class="card card-shadow bg-friend">
-                                        <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" /></div>
-                                        <div class="friend-info">
-                                            <h4>Ithamar Silvio</h4>
-                                            <p>1,923 friends</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="card card-shadow bg-friend">
-                                        <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" /></div>
-                                        <div class="friend-info">
-                                            <h4>Denzel Annas</h4>
-                                            <p>893 friends</p>
-                                        </div>
-                                    </a>
-                                </li>
+                                <li><a class="dropdown-item text-color" href="#"><i class="fas fa-user"></i>  Profile</a></li>
+                                <li><a class="dropdown-item text-color" href="#"><i class="fas fa-sign-out-alt"></i>  Logout</a></li>
                             </ul>
-                        </div>
-
-                    </div>
-            
-                    <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" >
-                        <div class="tab-pane active show" id="profile-about">
-                            <table class="table table-profile">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">WORK AND EDUCATION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="field">Work</td>
-                                        <td class="value">
-                                            <div class="m-b-5">
-                                                <b>Magnificient IT (2017)</b> <a href="#" class="m-l-10">Edit</a><br />
-                                                <span class="text-color">PHP Programmer</span>
-                                            </div>
-                                            <div>
-                                                <b>Neutrino IT (2012)</b> <a href="#" class="m-l-10">Edit</a><br />
-                                                <span class="text-color">UXUI / Frontend Developer</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Education</td>
-                                        <td class="value">
-                                            <div class="m-b-5">
-                                                <b>University (2009)</b> <a href="#" class="m-l-10">Edit</a><br />
-                                                <span class="text-color">University of Georgia, Athens, GA</span>
-                                            </div>
-                                            <div>
-                                                <b>High School (2006)</b> <a href="#" class="m-l-10">Edit</a><br />
-                                                <span class="text-color">Heritage High School, West Chestter, PA</span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Skills</td>
-                                        <td class="value">
-                                            C++, PHP, HTML5, CSS, jQuery, MYSQL, Ionic, Laravel, Phonegap, Bootstrap, Angular JS, Angular JS, Asp.net
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-profile">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">CONTACT INFORMATION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="field">Mobile Phones</td>
-                                        <td class="value">
-                                            +44 7700 900860
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Email</td>
-                                        <td class="value">
-                                            admin@infinite.com
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Facebook</td>
-                                        <td class="value">
-                                            http://facebook.com/infinite.admin
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Website</td>
-                                        <td class="value">
-                                            http://seantheme.com
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Address</td>
-                                        <td class="value">
-                                            Twitter, Inc. <a href="#" class="m-l-10">Edit</a><br />
-                                            1355 Market Street, Suite 900<br />
-                                            San Francisco, CA 94103
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <table class="table table-profile">
-                                <thead>
-                                    <tr>
-                                        <th colspan="2">BASIC INFORMATION</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="field">Birth of Date</td>
-                                        <td class="value">
-                                            November 4, 1989
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Gender</td>
-                                        <td class="value">
-                                            Male
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Facebook</td>
-                                        <td class="value">
-                                            http://facebook.com/infinite.admin
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Website</td>
-                                        <td class="value">
-                                            http://seantheme.com
-                                            <a href="#" class="m-l-10">Edit</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <ul class="profile-info-list">
-                        <li class="title fs-6 border-bottom text-color border-2">PERSONAL INFORMATION</li>
-                        <li>
-                            <div class="field">Occupation:</div>
-                            <div class="value">UXUI / Frontend Developer</div>
-                        </li>
-                        <li>
-                            <div class="field">Skills:</div>
-                            <div class="value">C++, PHP, HTML5, CSS, jQuery, MYSQL, Ionic, Laravel, Phonegap, Bootstrap, Angular JS, Angular JS, Asp.net</div>
-                        </li>
-                        <li>
-                            <div class="field">Birth of Date:</div>
-                            <div class="value">1989/11/04</div>
-                        </li>
-                        <li>
-                            <div class="field">Country:</div>
-                            <div class="value">San Francisco</div>
-                        </li>
-                        <li>
-                            <div class="field">Address:</div>
-                            <div class="value">
-                                <address>
-                                    Twitter, Inc.<br />
-                                    1355 Market Street, Suite 900<br />
-                                    San Francisco, CA 94103
-                                </address>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="field">Phone No.:</div>
-                            <div class="value">
-                                (123) 456-7890
-                            </div>
-                        </li>
-                        <li>
-                            <div class="field">Friends list:</div>
-                        </li>
-                        <li class="img-list">
-                            <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" /></a>
-                            <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" /></a>
                         </li>
                     </ul>
                 </div>
-            </div>
+            </nav>
+        </div>
+        <div class="container mt-4">
+            <div id="content" class="content p-0">
+                <div class="profile-header" style="border-radius: 10px;">
+                    <div class="profile-header-cover"></div>
+            
+                    <div class="profile-header-content">
+                        <div class="profile-header-img rounded-circle">
+                            <img src="/images/avatar.png" alt="" />
+                        </div>
+            
+                        <div class="profile-header-info">
+                            <h4 class="m-t-sm">Tran Hoang Long</h4>
+                            <p class="m-b-sm">UXUI + Frontend Developer</p>
+                            <a href="#" class="btn btn-xs btn-primary mb-3">Change avatar</a>
+                        </div>
+                    </div>
 
+                </div>
+                <div class="mt-2">
+                    <ul class="profile-header-tab nav nav-tabs mb-5 justify-content-between align-items-center">
+    
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" >About</button>
+                            <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" >Friends</button>
+                        </div>
+                        <div class="border-0 btn" id="btn-edit-profile"><i class="fas fa-ellipsis-h"></i></div>
+                        
+                    </ul>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="tab-content col-7" id="nav-tabContent">
+                        <div class="tab-pane fade" id="nav-home" role="tabpanel">
+                            <div class="tab-pane fade active show" id="profile-friends">
+                                <div class="m-b-10"><b>Friend List (2)</b></div>
+    
+                                <ul class="friend-list clearfix">
+                
+                                    <li>
+                                        <a href="#" class="card card-shadow bg-friend">
+                                            <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" /></div>
+                                            <div class="friend-info">
+                                                <h4>Ithamar Silvio</h4>
+                                                <p>1,923 friends</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="card card-shadow bg-friend">
+                                            <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="" /></div>
+                                            <div class="friend-info">
+                                                <h4>Ithamar Silvio</h4>
+                                                <p>1,923 friends</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="card card-shadow bg-friend">
+                                            <div class="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" /></div>
+                                            <div class="friend-info">
+                                                <h4>Denzel Annas</h4>
+                                                <p>893 friends</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+    
+                        </div>
+                
+                        <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" >
+                            <div class="tab-pane active show" id="profile-about">
+                                <table class="table table-profile">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">WORK AND EDUCATION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="field">Work</td>
+                                            <td class="value">
+                                                <div>
+                                                    <b>Magnificient IT (2017)</b> <br/>
+                                                    <span class="text-color">PHP Programmer</span>
+                                                </div>
+                                                <div>
+                                                    <b>Neutrino IT (2012)</b><br />
+                                                    <span class="text-color">UXUI / Frontend Developer</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field">Education</td>
+                                            <td class="value">
+                                                <div>
+                                                    <b>University (2009)</b><br/>
+                                                    <span class="text-color">University of Georgia, Athens, GA</span>
+                                                </div>
+                                                <div>
+                                                    <b>High School (2006)</b><br/>
+                                                    <span class="text-color">Heritage High School, West Chestter, PA</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field">Skills</td>
+                                            <td class="value">
+                                                C++, PHP, HTML5, CSS, jQuery, MYSQL, Ionic, Laravel, Phonegap, Bootstrap, Angular JS, Angular JS, Asp.net
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table class="table table-profile">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">CONTACT INFORMATION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="field"><i class="fas fa-phone"></i></td>
+                                            <td class="value">
+                                                +44 7700 900860
+                                               
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field"><i class="fab fa-google"></i></td>
+                                            <td class="value">
+                                               <a href="#" class="a-social">admin123@gmail.com</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field"><i class="fab fa-facebook-square"></i></td>
+                                            <td class="value">
+                                                <a href="#" class="a-social">facebook123</a>
+                                            </td>
+                                                
+                                        </tr>
+                                        <tr>
+                                            <td class="field"><i class="fas fa-link"></i></td>
+                                            <td class="value">
+                                                <a href="#" class="a-social">http://seantheme.com</a>  
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field"><i class="fas fa-map-marker-alt"></i></td>
+                                            <td class="value">
+                                                Twitter, Inc. <br />
+                                                1355 Market Street, Suite 900<br />
+                                                San Francisco, CA 94103
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                    
+                        </div>
+                    </div>
+    
+                    <div class="col-4">
+                        <ul class="profile-info-list">
+                            <li class="title fs-6 border-bottom text-color border-2">PERSONAL INFORMATION</li>
+                            <li>
+                                <div class="field">Occupation:</div>
+                                <div class="value">UXUI / Frontend Developer</div>
+                            </li>
+                            <li>
+                                <div class="field">Skills:</div>
+                                <div class="value">C++, PHP, HTML5, CSS, jQuery, MYSQL, Ionic, Laravel, Phonegap, Bootstrap, Angular JS, Angular JS, Asp.net</div>
+                            </li>
+                            <li>
+                                <div class="field">Birth of Date:</div>
+                                <div class="value">1989/11/04</div>
+                            </li>
+                            <li>
+                                <div class="field">Country:</div>
+                                <div class="value">San Francisco</div>
+                            </li>
+                            <li>
+                                <div class="field">Address:</div>
+                                <div class="value">
+                                    <address>
+                                        Twitter, Inc.<br />
+                                        1355 Market Street, Suite 900<br />
+                                        San Francisco, CA 94103
+                                    </address>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="field">Phone No.:</div>
+                                <div class="value">
+                                    (123) 456-7890
+                                </div>
+                            </li>
+                            <li>
+                                <div class="field">Friends list:</div>
+                            </li>
+                            <li class="img-list">
+                                <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" /></a>
+                                <a href="#"><img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" /></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+    
+            </div>
         </div>
     </div>
+   
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
