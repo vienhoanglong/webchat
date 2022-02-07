@@ -90,7 +90,7 @@ img {
   width: 100%;
   border-radius: 50%;
 }
-.logo {
+img.logo {
   margin-left: 10px;
   height: 25px;
   border-radius: 0;
@@ -522,7 +522,7 @@ form.sign {
   overflow: hidden;
 }
 .profile-header .profile-header-cover {
-  background: url(./images/bg1.jpg) center no-repeat;
+  background: url(../images/bg1.jpg) center no-repeat;
   background-size: 100% auto;
   position: absolute;
   left: 0;
