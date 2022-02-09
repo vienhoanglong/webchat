@@ -41,7 +41,7 @@ body {
   font-family: "DM Sans", sans-serif !important;
   color: var(--text-color) !important;
 }
-p,
+/* p, */
 h4 {
   color: var(--gray-color) !important;
 }
@@ -449,6 +449,9 @@ form.sign {
 }
 .google:hover {
   color: #ff4b2b;
+}
+.github:hover {
+  color: #000;
 }
 /* PROFILE */
 .profile-info-list {
