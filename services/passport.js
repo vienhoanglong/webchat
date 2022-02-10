@@ -51,5 +51,24 @@ passport.use(new githubStrategy({
     clientID: process.env.CLIENT_ID_GIT,
     clientSecret: process.env.CLIENT_SECRET_GIT,
     callbackURL: process.env.CALLBACK_URL_GIT
-  },(token, refreshToken, profile, done) => {return done(null, profile)}
+  },(token, refreshToken, profile, done) => {
+    accounts.findOne({id: profile.id}).then((currentUser) => {
+        if (currentUser) {
+           done(null, currentUser);
+        //    console.log("1")
+        } else {
+            // console.log("2")
+           // tao account moi 
+           new accounts({
+              id: profile.id,
+              username: profile.displayName,
+              picture: "avatar.png"
+           })
+           .save()
+           .then( (newUser) => {
+              done(null, newUser);
+           });
+        }
+     })
+  }
 ));
