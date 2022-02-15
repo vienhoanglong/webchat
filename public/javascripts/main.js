@@ -63,5 +63,43 @@ if(signInButton){
   });
 }
 
+// Using ajax jquery submit form signin, signup
+
+  $('#sign_in').click(function(){
+      
+    let si_username = $('#si_username').val();
+    let si_password = $('#si_password').val();
+    if(si_username==''){
+      $('#err_username').html('Username không được để trống');
+    }else{
+      $('#err_username').html('');
+    }
+    if(si_password == ''){
+      $('#err_password').html('Password không được để trống');
+    }else if(si_password.length <=6){
+      $('#err_password').html('Password phải có phải từ 6 kí tự');
+    }
+    else{
+      $('#err_password').html('');
+    }
+    $.ajax({
+        type: 'POST',
+        url: '/signin',
+        dataType:'JSON',
+        data:{
+            username: si_username,
+            password: si_password
+        },
+        success: function (result) {
+          console.log("result",result);
+          
+        }
+        
+    });
+  });
+
+  
+
+
 
 

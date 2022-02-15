@@ -312,7 +312,7 @@ form.sign {
 }
 
 .container-sign.right-panel-active .sign-in-container {
-  transform: translateX(100%);
+  transform: translateX(100%); 
 }
 
 .sign-up-container {
@@ -523,6 +523,7 @@ form.sign {
 .profile-header {
   position: relative;
   overflow: hidden;
+  border-radius: 10px;
 }
 .profile-header .profile-header-cover {
   background: url(../images/bg1.jpg) center no-repeat;

@@ -1,24 +1,25 @@
 const accountModels = require('../models/accounts')
 const passwordHash = require('password-hash')
 const {validationResult} = require('express-validator');
+//getIndex
+const getIndex = async (req, res)=>{
+    res.render('index');
+}
 // getSignUp
 const getSignUp = (req, res) =>{
-    let error1 = 0;
-    let error2 = req.flash('error2') || '' ;
-    console.log("signup",error2)
+    let errSignIn = 0;
+    let errSignUp = req.flash('errSignUp') || '' ;
+    console.log("signup",errSignUp)
     // if(req.cookies.idGmail || req.cookies.username){
     //     res.redirect("/")
     // }
-    res.render('login',{error2, error1})
+    res.render('login',{errSignUp, errSignIn})
 }
-const getSignIn = (req, res) =>{
-    let error2 = 0;
-    let error1 = req.flash('error1') || '' ;
-    console.log("sigin",error1)
-    // if(req.cookies.idGmail || req.cookies.username){
-    //     res.redirect("/")
-    // }
-    res.render('login',{error1, error2})
+const getSignIn = async(req, res) =>{
+    let errSignUp = 0;
+    let errSignIn = req.flash('errSignIn') || '' ;
+    console.log("Get sign in", errSignUp, errSignIn)
+    res.render('login',{errSignIn, errSignUp})
 }
 
 const signUp = async(req, res) =>{
@@ -35,50 +36,53 @@ const signUp = async(req, res) =>{
         }
     }else{
         result = result.mapped();
-		let error2 ;
+		let errSignUp ;
 		for(fields in result){
-			error2 = result[fields].msg;
+			errSignUp = result[fields].msg;
 			break;
 		}
-
-		req.flash('error2',error2);
+		req.flash('errSignUp',errSignUp);
 		res.redirect('/signup');
     }
 }
 const signIn = async(req, res) =>{
-    const{username, password} = req.body
-    // console.log(req.body)
     let result = validationResult(req);
 	if(result.errors.length === 0) {
+        const{username, password} = req.body
+        console.log("Usename",req.body.username)
+        console.log("Password",req.body.password)
         const account = await accountModels.findOne({username: username})
         if(account){
             if(passwordHash.verify(password, account.password)){
-                    
+                console.log('Dang nhap thanh cong')
                 res.redirect('/index')
+                return;
             }
             else{
                 console.log('Mat khau khong chinh xac')
                 res.redirect('/signin')
+                return;
             }
         }else{
             console.log('Khong Co tai khoan')
             res.redirect('/signin')
+            return;
         }
     }
     else{
         result = result.mapped();
-		let error1;
+		let errSignIn;
 		for(fields in result){
-			error1 = result[fields].msg;
+			errSignIn = result[fields].msg;
 			break;
 		}
-
-		req.flash('error1',error1);
+		req.flash('errSignIn', errSignIn);
 		res.redirect('/signin');
     }
 
 }
 module.exports ={
+    getIndex,
     signUp,
     signIn,
     getSignUp,

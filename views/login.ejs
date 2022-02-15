@@ -14,16 +14,14 @@
 <body class="body-signup">
     <div class="container-sign" id="container-sign">
         <div class="form-container sign-up-container">
-            <div class="form-group">
-                <% if (error2.length > 0) { %>
-                    <div class="alert alert-danger"><%= error2 %></div>
-                <% } %>
-            </div>
             <form action="/signup" class="sign" method="post">
-                <h1 class="text-sign">Create Account</h1> 
-                <input class="input-sign" type="text" placeholder="Fullname" id="si_fullname" name="fullname"/>
-                <input class="input-sign" type="text" placeholder="Username" id="si_username" name="username"/>
-                <input class="input-sign" type="password" placeholder="Password" id="si_password" name="password"/>
+                <h2 class="text-sign">Create Account</h2> 
+                <input class="input-sign" type="text" placeholder="Fullname" id="su_fullname" name="fullname"/>
+                <input class="input-sign" type="text" placeholder="Username" id="su_username" name="username"/>
+                <input class="input-sign" type="password" placeholder="Password" id="su_password" name="password"/>
+                <% if (errSignUp.length > 0) { %>
+                    <p class="text text-danger"><%= errSignUp %></p>
+                <% } %>
                 <button class="button-sign" >Sign Up</button>
                 <span class="text-sign">or sign in with</span>
                 <div class="social-container">
@@ -35,18 +33,17 @@
         </div>
         <div class="form-container sign-in-container">
            
-            <form action="/signin" class="sign" method="post">
-                <div class="form-group">
-                    <% if (error1.length > 0) { %>
-                        <div class="alert alert-danger"><%= error1 %></div>
-                    <% } %>
-                    
-                </div>
-                <h1 class="text-sign">Sign in</h1>
-                <input class="input-sign" type="text" placeholder="Username" id="su_username" name="username" />
-                <input class="input-sign" type="password" placeholder="Password" id="su_password" name="password" />
+            <form  action="/signin" class="sign" method="post" >
+                <h2 class="text-sign">Sign in</h2>
+                <input class="input-sign" type="text" placeholder="Username" id="si_username" name="username" />
+                <span class="text text-danger" id="err_username"></span>
+                <input class="input-sign" type="password" placeholder="Password" id="si_password" name="password" />
+                <span class="text text-danger" id="err_password"></span>
+                <% if (errSignIn.length > 0) { %>
+                    <p class="text text-danger"><%= (errSignIn) %></p>
+                <% } %>
                 <a class="a-sign" href="#">Forgot your password?</a>
-                <button class="button-sign">Sign In</button>
+                <button type="button" class="button-sign" id="sign_in">Sign In</button>
                 <span class="text-sign">or sign in with</span>
                 <div class="social-container">
                     <a class="a-sign" href="/auth/facebook" class="social"><i class="fab fa-facebook-f facebook"></i></a>

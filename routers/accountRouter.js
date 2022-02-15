@@ -25,8 +25,9 @@ Router.get('/auth/github/callback',
         successRedirect : '/index', 
         failureRedirect: '/login' 
 }));
+Router.get('/',accountController.getIndex);
 Router.get('/signup',accountController.getSignUp)
 Router.get('/signin',accountController.getSignIn)
 Router.post('/signup',validators.signUpValidator,accountController.signUp)
-Router.post('/signin',validators.signInValidator,accountController.signIn)
+Router.post('/signin', validators.signInValidator,accountController.signIn)
 module.exports = Router;
