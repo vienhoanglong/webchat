@@ -5,86 +5,61 @@ const {validationResult} = require('express-validator');
 const getIndex = async (req, res)=>{
     res.render('index');
 }
-// getSignUp
-const getSignUp = (req, res) =>{
-    let errSignIn = 0;
-    let errSignUp = req.flash('errSignUp') || '' ;
-    console.log("signup",errSignUp)
-    // if(req.cookies.idGmail || req.cookies.username){
-    //     res.redirect("/")
-    // }
-    res.render('login',{errSignUp, errSignIn})
+const getLogin = (req, res) =>{
+    res.render('login')
 }
-const getSignIn = async(req, res) =>{
-    let errSignUp = 0;
-    let errSignIn = req.flash('errSignIn') || '' ;
-    console.log("Get sign in", errSignUp, errSignIn)
-    res.render('login',{errSignIn, errSignUp})
-}
-
-const signUp = async(req, res) =>{
-    let result = validationResult(req)
-    if(result.errors.length === 0) {
-        const{fullname, username, password} = req.body
-        let hashedPassword = passwordHash.generate(password); 
-        try{
-            const account = await accountModels.create({fullname, username, password: hashedPassword})
-            return res.status(201).json(account)
-        }
-        catch(err){
-            res.status(400).json({ err })
-        }
-    }else{
-        result = result.mapped();
-		let errSignUp ;
-		for(fields in result){
-			errSignUp = result[fields].msg;
-			break;
-		}
-		req.flash('errSignUp',errSignUp);
-		res.redirect('/signup');
-    }
-}
-const signIn = async(req, res) =>{
-    let result = validationResult(req);
-	if(result.errors.length === 0) {
-        const{username, password} = req.body
-        console.log("Usename",req.body.username)
-        console.log("Password",req.body.password)
-        const account = await accountModels.findOne({username: username})
-        if(account){
-            if(passwordHash.verify(password, account.password)){
-                console.log('Dang nhap thanh cong')
-                res.redirect('/index')
-                return;
+const postLogin = async (req, res) =>{
+    if ('signup' === req.body.typeForm) {
+        let result = validationResult(req)
+        if(result.errors.length === 0) {
+            const{fullname, username, password} = req.body
+            let hashedPassword = passwordHash.generate(password); 
+            try{
+                const account = await accountModels.create({fullname, username, password: hashedPassword})
+                return res.status(201).json({success: true, message:'Tạo tài khoản thành công', account: account})
             }
-            else{
-                console.log('Mat khau khong chinh xac')
-                res.redirect('/signin')
-                return;
+            catch(err){
+                return res.status(400).json({err})
             }
         }else{
-            console.log('Khong Co tai khoan')
-            res.redirect('/signin')
-            return;
+            result = result.mapped();
+            let errSignUp 
+            for(fields in result){
+                errSignUp = result[fields].msg
+                break
+            }
+            return res.json({success: false, message: errSignUp});
+        }
+    } 
+    if('signin' === req.body.typeForm) {
+        let result = validationResult(req);
+        if(result.errors.length === 0) {
+            const{username, password} = req.body
+            const account = await accountModels.findOne({username: username})
+            if(account){
+                if(passwordHash.verify(password, account.password)){
+                    return res.json({success: true, message: 'Đăng nhập thành công'})
+                }
+                else{
+                    return res.json({success: false, message: 'Mật khẩu không chính xác'});
+                }
+            }else{
+                return res.json({success: false, message: 'Tài khoản không tồn tại'});
+            }
+        }
+        else{
+            result = result.mapped();
+            let errSignIn;
+            for(fields in result){
+                errSignIn = result[fields].msg;
+                break;
+            }
+            return res.json({success: false, message: errSignIn}); 
         }
     }
-    else{
-        result = result.mapped();
-		let errSignIn;
-		for(fields in result){
-			errSignIn = result[fields].msg;
-			break;
-		}
-		req.flash('errSignIn', errSignIn);
-		res.redirect('/signin');
-    }
-
 }
 module.exports ={
     getIndex,
-    signUp,
-    signIn,
-    getSignUp,
-    getSignIn
+    getLogin,
+    postLogin
 }

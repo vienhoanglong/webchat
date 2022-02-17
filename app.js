@@ -14,15 +14,15 @@ const flash = require('express-flash')
 const accountRouter = require('./routers/accountRouter')
 const app = express();
 
-// Set path views
-app.set('views', path.join(__dirname, 'views'));
 // Set views engine
 app.set('view engine', 'ejs')
+// Set path 
+app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(__dirname + '/public'))
 
 app.use(cookieParser())
 app.use(session({
-    secret: 'hoanglong',
+    secret: process.env.APP_SECRET,
     resave: false,
     saveUninitialized: true,
     
@@ -42,9 +42,9 @@ app.use('/',accountRouter)
 // app.use('/login', (req, res) =>{
 //     res.render('login')
 // })
-// app.use('/profile', (req, res) =>{
-//     res.render('profile')
-// })
+app.use('/profile', (req, res) =>{
+    res.render('profile')
+})
 app.use('/index', (req, res) =>{
     res.render('index')
 })

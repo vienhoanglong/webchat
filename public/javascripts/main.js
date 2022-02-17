@@ -64,39 +64,81 @@ if(signInButton){
 }
 
 // Using ajax jquery submit form signin, signup
-
-  $('#sign_in').click(function(){
-      
-    let si_username = $('#si_username').val();
-    let si_password = $('#si_password').val();
-    if(si_username==''){
-      $('#err_username').html('Username không được để trống');
-    }else{
-      $('#err_username').html('');
-    }
-    if(si_password == ''){
-      $('#err_password').html('Password không được để trống');
-    }else if(si_password.length <=6){
-      $('#err_password').html('Password phải có phải từ 6 kí tự');
-    }
-    else{
-      $('#err_password').html('');
-    }
+$('#sign_in').click(function(e){
+  e.preventDefault();
+  let si_username = $('#si_username').val();
+  let si_password = $('#si_password').val();
+  let type_form = $('#typeFormSi').val();
+  if(si_username == ''){
+    $('#err_signin').html('Vui lòng nhập username');
+  }else if(si_password ==''){
+    $('#err_signin').html('Vui lòng nhập password');
+  }else{
     $.ajax({
         type: 'POST',
-        url: '/signin',
+        url: '/login',
         dataType:'JSON',
         data:{
+            typeForm: type_form,
             username: si_username,
             password: si_password
         },
         success: function (result) {
-          console.log("result",result);
-          
-        }
-        
+          if(result.success == false){
+            $('#err_signin').html(result.message);
+          }else{
+            $('#success_login').html(result.message);
+            $('#alert_login').addClass('show');
+            setTimeout(function(){
+              $('#alert_login').removeClass('show');
+              location.href ='/index';
+            }, 3000);
+          }
+        } 
+         
     });
-  });
+  }
+});
+$('#sign_up').click(function(e){
+  e.preventDefault();
+  console.log('Hello')
+  let su_fullname = $('#su_fullname').val();
+  let su_username = $('#su_username').val();
+  let su_password = $('#su_password').val();
+  let type_form = $('#typeFormSu').val();
+  if(su_fullname == ''){
+    $('#err_signup').html('Vui lòng nhập tên đầy đủ');
+  }else if(su_username == ''){
+    $('#err_signup').html('Vui lòng nhập username');
+  }else if(su_password == ''){
+    $('#err_signup').html('Vui lòng nhập password');
+  }else{
+    $.ajax({
+      type: 'POST',
+        url: '/login',
+        dataType:'JSON',
+        data:{
+            typeForm: type_form,
+            fullname: su_fullname,
+            username: su_username,
+            password: su_password
+        },
+        success: function (result) {
+          console.log(result)
+          if(result.success == false){
+            $('#err_signup').html(result.message);
+          }else{
+            $('#success_login').html(result.message);
+            $('#alert_login').addClass('show');
+            setTimeout(function(){
+              $('#alert_login').removeClass('show');
+              location.reload();
+            }, 4000);
+          }
+        }
+    })
+  }
+})
 
   
 

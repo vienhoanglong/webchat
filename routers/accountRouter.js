@@ -2,6 +2,7 @@ const Router = require('express').Router()
 const passport = require('passport')
 const accountController = require('../controllers/accountController');
 const validators = require('../routers/validators/validations')
+// Login with google
 Router.get('/auth/google', passport.authenticate('google', { scope: 'email'}));
 
 Router.get('/auth/google/callback',
@@ -9,7 +10,7 @@ Router.get('/auth/google/callback',
         successRedirect : '/index',
         failureRedirect: '/login' 
 }));
-
+// Login with facebook
 Router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email'}));
 
 Router.get('/auth/facebook/callback',
@@ -17,7 +18,7 @@ Router.get('/auth/facebook/callback',
         successRedirect : '/index',
         failureRedirect: '/login' 
 }));
-
+// Login with github
 Router.get('/auth/github', passport.authenticate('github'));
  
 Router.get('/auth/github/callback', 
@@ -25,9 +26,11 @@ Router.get('/auth/github/callback',
         successRedirect : '/index', 
         failureRedirect: '/login' 
 }));
+// 
 Router.get('/',accountController.getIndex);
-Router.get('/signup',accountController.getSignUp)
-Router.get('/signin',accountController.getSignIn)
-Router.post('/signup',validators.signUpValidator,accountController.signUp)
-Router.post('/signin', validators.signInValidator,accountController.signIn)
+
+//Login
+Router.get('/login',accountController.getLogin)
+Router.post('/login',validators.signInValidator, accountController.postLogin)
+Router.post('/login',validators.signUpValidator, accountController.postLogin)
 module.exports = Router;

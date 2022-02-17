@@ -12,17 +12,20 @@
     <link rel='stylesheet' href='/stylesheets/style.css'/>
     <title>Sign in</title>
 <body class="body-signup">
+    <div class="alert alert-success alert-dismissible fade" role="alert" id="alert_login">
+        <strong>Thành công! </strong><span id="success_login"></span>.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     <div class="container-sign" id="container-sign">
         <div class="form-container sign-up-container">
-            <form action="/signup" class="sign" method="post">
+            <form class="sign">
                 <h2 class="text-sign">Create Account</h2> 
                 <input class="input-sign" type="text" placeholder="Fullname" id="su_fullname" name="fullname"/>
                 <input class="input-sign" type="text" placeholder="Username" id="su_username" name="username"/>
                 <input class="input-sign" type="password" placeholder="Password" id="su_password" name="password"/>
-                <% if (errSignUp.length > 0) { %>
-                    <p class="text text-danger"><%= errSignUp %></p>
-                <% } %>
-                <button class="button-sign" >Sign Up</button>
+                <input type="hidden" class="input-sign" value="signup" id="typeFormSu" name="typeform">
+                <span class="text text-danger" id="err_signup"></span>
+                <button type="button" class="button-sign" id="sign_up">Sign Up</button>
                 <span class="text-sign">or sign in with</span>
                 <div class="social-container">
                     <a class="a-sign" href="/auth/facebook" class="social"><i class="fab fa-facebook-f facebook"></i></a>
@@ -32,16 +35,12 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-           
-            <form  action="/signin" class="sign" method="post" >
+            <form class="sign">
                 <h2 class="text-sign">Sign in</h2>
                 <input class="input-sign" type="text" placeholder="Username" id="si_username" name="username" />
-                <span class="text text-danger" id="err_username"></span>
                 <input class="input-sign" type="password" placeholder="Password" id="si_password" name="password" />
-                <span class="text text-danger" id="err_password"></span>
-                <% if (errSignIn.length > 0) { %>
-                    <p class="text text-danger"><%= (errSignIn) %></p>
-                <% } %>
+                <input type="hidden" class="input-sign" value="signin" id="typeFormSi" name="typeform">
+                <span class="text text-danger" id="err_signin"></span>
                 <a class="a-sign" href="#">Forgot your password?</a>
                 <button type="button" class="button-sign" id="sign_in">Sign In</button>
                 <span class="text-sign">or sign in with</span>
@@ -67,17 +66,7 @@
             </div>
         </div>
     </div>
-    
-    <!-- <footer>
-        <p>
-            Created with <i class="fa fa-heart"></i> by
-            <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-            - Read how I created this and how you can join the challenge
-            <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-        </p>
-    </footer> -->
-    
-    
+ 
      <!-- Scripts -->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

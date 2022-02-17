@@ -23,10 +23,7 @@ passport.use(new googleStrategy({
         accounts.findOne({id: profile.id}).then((currentUser) => {
             if (currentUser) {
                done(null, currentUser);
-            //    console.log("1")
             } else {
-                // console.log("2")
-               // tao account moi 
                new accounts({
                   id: profile.id,
                   username: profile.displayName,
@@ -55,10 +52,7 @@ passport.use(new githubStrategy({
     accounts.findOne({id: profile.id}).then((currentUser) => {
         if (currentUser) {
            done(null, currentUser);
-        //    console.log("1")
         } else {
-            // console.log("2")
-           // tao account moi 
            new accounts({
               id: profile.id,
               username: profile.displayName,
