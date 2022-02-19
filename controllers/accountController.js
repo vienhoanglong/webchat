@@ -1,8 +1,13 @@
-const accountModels = require('../models/accounts')
+const User = require('../models/user')
 const passwordHash = require('password-hash')
 const {validationResult} = require('express-validator');
 //getIndex
 const getIndex = async (req, res)=>{
+    // let id = req.session.passport.user
+    // let user = await User.findById(id)
+    // res.cookie('idGmail',id,{ maxAge: 900000, httpOnly: true });
+    // // console.log(user)
+    // // console.log("cookie",req.cookies.idGmail)
     res.render('index');
 }
 const getLogin = (req, res) =>{
@@ -15,7 +20,7 @@ const postLogin = async (req, res) =>{
             const{fullname, username, password} = req.body
             let hashedPassword = passwordHash.generate(password); 
             try{
-                const account = await accountModels.create({fullname, username, password: hashedPassword})
+                const user = await User.create({fullname, username, password: hashedPassword})
                 return res.status(201).json({success: true, message:'Tạo tài khoản thành công', account: account})
             }
             catch(err){
@@ -35,9 +40,12 @@ const postLogin = async (req, res) =>{
         let result = validationResult(req);
         if(result.errors.length === 0) {
             const{username, password} = req.body
-            const account = await accountModels.findOne({username: username})
-            if(account){
-                if(passwordHash.verify(password, account.password)){
+            const user = await User.findOne({username: username})
+            if(user){
+                if(passwordHash.verify(password, user.password)){
+                    // Save
+                    res.cookie('username',username,{ maxAge: 900000, httpOnly: true });
+					res.cookie('fullname', user.fullname,{ maxAge: 900000, httpOnly: true });
                     return res.json({success: true, message: 'Đăng nhập thành công'})
                 }
                 else{

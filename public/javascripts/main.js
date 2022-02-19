@@ -91,11 +91,10 @@ $('#sign_in').click(function(e){
             $('#alert_login').addClass('show');
             setTimeout(function(){
               $('#alert_login').removeClass('show');
-              location.href ='/index';
+              location.href ='/';
             }, 3000);
           }
         } 
-         
     });
   }
 });
