@@ -26,4 +26,6 @@ Router.get('/',accountController.getIndex);
 Router.get('/login',accountController.getLogin)
 Router.post('/login',validators.signInValidator, accountController.postLogin)
 Router.post('/login',validators.signUpValidator, accountController.postLogin)
+//Forgot
+Router.get('/forgot',accountController.postForgot)
 module.exports = Router;

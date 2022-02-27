@@ -98,43 +98,56 @@ $('#sign_in').click(function(e){
     });
   }
 });
+function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if(!regex.test(email)) {
+    return false;
+  }else{
+    return true;
+  }
+}
 $('#sign_up').click(function(e){
   e.preventDefault();
-  console.log('Hello')
   let su_fullname = $('#su_fullname').val();
   let su_username = $('#su_username').val();
+  let su_email = $('#su_email').val();
   let su_password = $('#su_password').val();
   let type_form = $('#typeFormSu').val();
   if(su_fullname == ''){
     $('#err_signup').html('Vui lòng nhập tên đầy đủ');
   }else if(su_username == ''){
     $('#err_signup').html('Vui lòng nhập username');
+  }else if(su_email == ''){
+    $('#err_signup').html('Vui lòng nhập email');
+  }else if(IsEmail(su_email) == false){
+    $('#err_signup').html('Email không hợp lệ! Vui lòng nhập lại');
   }else if(su_password == ''){
     $('#err_signup').html('Vui lòng nhập password');
   }else{
     $.ajax({
       type: 'POST',
-        url: '/login',
-        dataType:'JSON',
-        data:{
-            typeForm: type_form,
-            fullname: su_fullname,
-            username: su_username,
-            password: su_password
-        },
-        success: function (result) {
-          console.log(result)
-          if(result.success == false){
-            $('#err_signup').html(result.message);
-          }else{
-            $('#success_login').html(result.message);
-            $('#alert_login').addClass('show');
-            setTimeout(function(){
-              $('#alert_login').removeClass('show');
-              location.reload();
-            }, 4000);
-          }
+      url: '/login',
+      dataType:'JSON',
+      data:{
+          typeForm: type_form,
+          fullname: su_fullname,
+          username: su_username,
+          email: su_email,
+          password: su_password
+      },
+      success: function (result) {
+        console.log(result)
+        if(result.success == false){
+          $('#err_signup').html(result.message);
+        }else{
+          $('#success_login').html(result.message);
+          $('#alert_login').addClass('show');
+          setTimeout(function(){
+            $('#alert_login').removeClass('show');
+            location.reload();
+          }, 4000);
         }
+      }
     })
   }
 })

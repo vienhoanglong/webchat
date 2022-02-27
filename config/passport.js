@@ -46,7 +46,7 @@ passport.use(new githubStrategy({
     callbackURL: process.env.CALLBACK_URL_GIT
   },(token, refreshToken, profile, done) => {
    User.findOne({id: profile.id}).then((currentUser) => {
-         // console.log(profile)
+         //console.log(profile)
         if (currentUser) {
            done(null, currentUser)
         } else {

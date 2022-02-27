@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const passwordHash = require('password-hash')
-const {validationResult} = require('express-validator');
+const {validationResult} = require('express-validator')
+const sendMail = require('../config/sendMail')
 //getIndex
 const getIndex = async (req, res)=>{
     // let id = req.session.passport.user
@@ -17,11 +18,11 @@ const postLogin = async (req, res) =>{
     if ('signup' === req.body.typeForm) {
         let result = validationResult(req)
         if(result.errors.length === 0) {
-            const{fullname, username, password} = req.body
+            const{fullname, username, email, password} = req.body
             let hashedPassword = passwordHash.generate(password); 
             try{
-                const user = await User.create({fullname, username, password: hashedPassword})
-                return res.status(201).json({success: true, message:'Tạo tài khoản thành công', account: account})
+                const user = await User.create({fullname, username, email, password: hashedPassword})
+                return res.status(201).json({success: true, message:'Tạo tài khoản thành công', account: user})
             }
             catch(err){
                 return res.status(400).json({err})
@@ -66,8 +67,13 @@ const postLogin = async (req, res) =>{
         }
     }
 }
+const postForgot = async(req, res) =>{
+    await sendMail('vienhoanglong789@gmail.com', 'Test', 'Test')
+    
+}
 module.exports ={
     getIndex,
     getLogin,
-    postLogin
+    postLogin,
+    postForgot
 }
