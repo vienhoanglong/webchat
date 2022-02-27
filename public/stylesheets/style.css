@@ -286,6 +286,15 @@ form.sign {
   width: 100%;
   border-radius: 8px;
 }
+.input-change {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  padding-right: 35px;
+  margin: 8px 0;
+  width: 100%;
+  border-radius: 8px;
+}
 
 .container-sign {
   background-color: #fff;
@@ -807,4 +816,16 @@ form.forgot {
 .container-fluid .forgot-bg {
   background-color: var(--bg-message);
   border-radius: 10px;
+}
+.field-icon {
+  color: #1a1926;
+  float: right;
+  margin-right: 10px;
+  margin-top: -44px;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+}
+.container-change {
+  padding-right: 0.75rem !important;
 }

@@ -1,3 +1,5 @@
+
+
 const buttonEmoji = document.querySelector('#btn-emoji');
 
 const picker = new EmojiButton();
@@ -151,8 +153,24 @@ $('#sign_up').click(function(e){
     })
   }
 })
-
-  
+// Toggle hidden eye input new password
+const toggleNewPassword = document.querySelector('#toggleNewPassword');
+const newPassword = document.querySelector('#newpassword');
+toggleNewPassword.addEventListener('click', function() {
+  const type = newPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+  newPassword.setAttribute('type', type);
+  this.classList.toggle('fa-eye');
+  this.classList.toggle('fa-eye-slash');
+})
+// Toggle hidden eye input reapeat password
+const toggleReapeatPassword = document.querySelector('#toggleReapeatPassword');
+const reapeatpassword = document.querySelector('#reapeatpassword');
+toggleReapeatPassword.addEventListener('click', function() {
+  const type = reapeatpassword.getAttribute('type') === 'password' ? 'text' : 'password';
+  reapeatpassword.setAttribute('type', type);
+  this.classList.toggle('fa-eye');
+  this.classList.toggle('fa-eye-slash');
+})  
 
 
 

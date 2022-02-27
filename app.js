@@ -48,8 +48,11 @@ app.use('/profile', (req, res) =>{
 // app.use('/index', (req, res) =>{
 //     res.render('index')
 // })
-// app.use('/forgot',(req, res)=>{
-//     res.render('forgotPassword')
-// })
+app.use('/change', (req, res) =>{
+    res.render('changePassword')
+})
+app.use('/forgot',(req, res)=>{
+    res.render('forgotPassword')
+})
 //running
 app.listen(process.env.APP_PORT, ()=>console.log('http://localhost:8080'))
