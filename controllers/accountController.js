@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Token = require('../models/token')
 const passwordHash = require('password-hash')
 const {validationResult} = require('express-validator')
 const sendMail = require('../config/sendMail')
@@ -38,7 +39,7 @@ const postLogin = async (req, res) =>{
         }
     } 
     if('signin' === req.body.typeForm) {
-        let result = validationResult(req);
+        let result = validationResult(req)
         if(result.errors.length === 0) {
             const{username, password} = req.body
             const user = await User.findOne({username: username})
@@ -67,13 +68,51 @@ const postLogin = async (req, res) =>{
         }
     }
 }
+const getForgot = async(req, res) => {
+    let msgForgot = req.flash('msgForgot') || '' ;
+    res.render('forgotPassword',{msgForgot})
+}
 const postForgot = async(req, res) =>{
-    await sendMail('vienhoanglong789@gmail.com', 'Test', 'Test')
+    // await sendMail('vienhoanglong789@gmail.com', 'Test', 'Test')
+    let result = validationResult(req)
+    if(result.errors.length === 0){
+        const {email_forgot} = req.body
+        console.log(email_forgot)
+        // Check email in db
+        const user = await User.findOne({email:email_forgot})
+        console.log(user)
+        if(!user){
+            req.flash('msgForgot', 'Email không tồn tại')
+            res.redirect('/forgot')
+        }
+        //check token 
+        // let token = await Token.findOne({userId: user._id})
+        // if(!token){
+        //     token = await new Token({
+        //         userId: user._id,
+        //         token: crypto.randomBytes(32).toString("hex"),
+        //     }).save();
+        // }
+        //create link
+        // const link = `${process.env}`
+
+    }else{
+        result = result.mapped();
+        let msg;
+		for(fields in result){
+			msg = result[fields].msg
+			break;
+		}
+		req.flash('msgForgot',msg)
+        res.redirect('/forgot')
+    }
+    // console.log(req.body)
     
 }
 module.exports ={
     getIndex,
     getLogin,
     postLogin,
-    postForgot
+    getForgot,
+    postForgot,
 }
