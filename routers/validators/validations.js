@@ -28,8 +28,24 @@ let forgotPasswordValidator = [
         .notEmpty().withMessage('Email không được để trống')
         .isEmail().withMessage('Email không hợp lệ')
 ]
+let changePasswordValidator = [
+        check('newpassword').exists().withMessage('Vui lòng nhập mật khẩu mới')
+        .notEmpty().withMessage('Mật khẩu mới không được để trống')
+        .isLength({min : 6}).withMessage('Mật khẩu mới phải từ 6 kí tự trở lên'),
+        
+        check('reapeatpassword').exists().withMessage('Vui lòng nhập lại mật khẩu mới')
+        .notEmpty().withMessage('Nhập lại mật khẩu mới không được để trống')
+        .isLength({min:6}).withMessage('Nhập lại mật khẩu phải có tối thiểu 6 kí tự')
+        .custom((value, {req}) => {
+                if(value !== req.body.newpassword){
+                throw new Error('Mật khẩu không khớp')
+                }
+                return true
+        })
+]
 module.exports = {
     signUpValidator,
     signInValidator,
-    forgotPasswordValidator
+    forgotPasswordValidator,
+    changePasswordValidator
 }

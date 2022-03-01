@@ -26,8 +26,11 @@ router.get('/',accountController.getIndex);
 router.get('/login',accountController.getLogin)
 router.post('/login',validators.signInValidator, accountController.postLogin)
 router.post('/login',validators.signUpValidator, accountController.postLogin)
-//Forgot
+//Forgotpassword
 router.get('/forgot',accountController.getForgot)
 router.post('/forgot',validators.forgotPasswordValidator,accountController.postForgot)
+//changepassword
+router.get('/change/:userId/:token',accountController.getChange)
+router.post('/change/:userId/:token',validators.changePasswordValidator,accountController.postChange)
 
 module.exports = router;
