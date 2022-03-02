@@ -111,28 +111,41 @@ const postForgot = async(req, res) =>{
 }
 const getChange = async(req, res) =>{
     let msgChange = req.flash('msgChange') || ''
-    res.render('changePassword',{msgChange})
+    let msgChangeSuccess = req.flash('msgChangeSuccess') || ''
+    res.render('changePassword',{msgChange,msgChangeSuccess})
 }
 const postChange = async(req, res) =>{
     let result = validationResult(req)
-    console.log(result)
+    const userId = req.params.userId
+    const userToken = req.params.token
     if(result.errors.length === 0){
-        // console.log(req.params.userId)
-        const user = await User.findById(req.params.userId)
+        const {newpassword, reapeatpassword} = req.body
+        const user = await User.findById(userId)
         if(!user){
             req.flash('msgChange','Liên kế không phù hợp hoặc đã hết hạn')
-            res.redirect('/change/:userId/:token')
+            res.redirect(`/change/${userId}/${userToken}`)
         }
         const token = await Token.findOne({
             userId: user._id,
-            token: req.params.token
+            token: userToken
         })
         if(!token){
             req.flash('msgChange','Liên kế không phù hợp hoặc đã hết hạn')
-            res.redirect('/change/:userId/:token')
+            res.redirect(`/change/${userId}/${userToken}`)
         }
         //Update password for user
-        res.send('hello')
+        if(newpassword === reapeatpassword){
+            let hashedPassword = passwordHash.generate(newpassword);
+            user.password = hashedPassword
+            await user.save();
+            await token.delete();
+            req.flash('msgChangeSuccess','Đã reset mật khẩu mới thành công')
+            res.redirect(`/change/${userId}/${userToken}`)
+
+        }else{
+            req.flash('msgChange','Mật khẩu không khớp')
+            res.redirect(`/change/${userId}/${userToken}`)
+        }
     }else{
         result = result.mapped();
         let msg;
@@ -141,22 +154,8 @@ const postChange = async(req, res) =>{
 			break
 		}
 		req.flash('msgChange',msg)
-        res.redirect('/change/:userId/:token')
+        res.redirect(`/change/${userId}/${userToken}`)
     }
-    // try{
-        
-    //     const user = await User.findById(req.params.userId)
-    //     if(!user){
-    //         return res.status(400).send("invalid link or expired")
-    //     }
-    //     const token = await Token.findOne({
-    //         userId: user._id,
-    //         token: req.params.token,
-    //     });
-    //     if (!token) return res.status(400).send("Invalid link or expired");
-    // }catch(err){
-
-    // }
 }
 module.exports = {
     getIndex,

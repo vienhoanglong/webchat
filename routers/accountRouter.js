@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const passport = require('passport')
 const accountController = require('../controllers/accountController');
-const validators = require('../routers/validators/validations')
+const validators = require('../validators/validations')
 const checkLoggedIn = require('../middlewares/checkLoggedIn')
 // Login with google
 router.get('/auth/google', passport.authenticate('google', { scope : ['profile','email']}));
