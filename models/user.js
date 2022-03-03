@@ -7,8 +7,11 @@ const userSchema = new Schema({
     username : String,
     email: String,
     password: String,
-    img: {type:String, default: "avatar.png"},
-    listfriend:{type: Schema.Types.ObjectId , ref: 'listfriend'} 
+    image: {type:String, default: "avatar.png"},
+    status: {
+        type: String,
+        default: "offline",
+      },
 });
 
 
