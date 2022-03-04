@@ -184,7 +184,7 @@ img.logo {
   border-radius: 8px;
 }
 .chat-content > div {
-  width: 70%;
+  width: 85%;
 }
 
 .btn-more:hover {
@@ -829,3 +829,4 @@ form.forgot {
 .container-change {
   padding-right: 0.75rem !important;
 }
+/* Responsive */

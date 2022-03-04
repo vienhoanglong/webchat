@@ -20,7 +20,7 @@
         <!-- Navbar -->
         <div class="container-fluid row">
             <!-- Chats -->
-            <div class="col-3 bg-color">
+            <div class="col-3 bg-color" id="list-chat">
                 <div class="p-3">
                     <h4 class="fw-bold mb-0">Chats</h4>
                 </div>
@@ -201,7 +201,7 @@
             <!-- Chats-->
             <!--  -->
             <!-- Content chats -->
-            <div class="col bg-color-white">
+            <div class="col bg-color-white" id="content-chat">
                <div class="border-bottom d-flex inbox">
                     <div class="avatar-chats flex-shrink-0">
                         <img src="/images/friend.png" class="img-friend" alt="...">
@@ -212,9 +212,10 @@
                        <span class="action-now">Online</span>
                     </div>
                     <div class="more-options">
-                       <button type="button" class="bg-color-white border-0 btn-lg btn-chats"><i class="fas fa-phone"></i></button>
-                       <button type="button" class="bg-color-white border-0 btn-lg btn-chats"><i class="fas fa-video"></i></button>
-                       <button type="button" class="bg-color-white border-0 btn-lg btn-chats btn-information"><i class="fas fa-info-circle"></i></button>
+                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats btn-under600"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats btn-600"><i class="fas fa-phone"></i></button>
+                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats btn-600"><i class="fas fa-video"></i></button>
+                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats btn-information btn-600"><i class="fas fa-info-circle"></i></button>
                     </div>
                </div>
                <div>
@@ -357,10 +358,10 @@
                <div class="message border-top col">
                     <div class="message-content input-group">
                         <button type="button" class="bg-color-white border-0 btn-lg btn-chats"><i class="fas fa-plus"></i></button>
-                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats"><i class="fas fa-image"></i></button>
-                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats"><i class="fas fa-microphone"></i></button>
+                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats noshow368"><i class="fas fa-image"></i></button>
+                        <button type="button" class="bg-color-white border-0 btn-lg btn-chats noshow368"><i class="fas fa-microphone"></i></button>
                         <textarea id="textarea" class="form-control rounded-3 text-truncate bg-color-white text-color" placeholder="Type your message..." rows="1" data-autosize="true"></textarea>
-                        <button type="button" id="btn-emoji" class="bg-color-white border-0 btn-lg btn-chats" ><i class="fas fa-smile"></i></button>
+                        <button type="button" id="btn-emoji" class="bg-color-white border-0 btn-lg btn-chats noshow368" ><i class="fas fa-smile"></i></button>
                         <button type="button"class="bg-color-white border-0 btn-lg btn-chats"><i class="fas fa-paper-plane"></i></button>
                     </div>
                </div>

@@ -190,7 +190,27 @@ function countdown(){
       time--;
     }
   }
-}  
+}
+//Responsive 
+$(window).resize(function(){
+  var width = $(window).width();
+  if(width <= 600){
+      $('#list-chat').addClass('d-none')
+      $('.btn-600').addClass('d-none')
+      $('.btn-under600').removeClass('d-none')
+  }else{
+      $('#list-chat').removeClass('d-none')
+      $('.btn-600').removeClass('d-none')
+      $('.btn-under600').addClass('d-none')
+  }
+  if(width<= 386){
+    $('.logo').addClass('d-none')
+    $('.noshow368').addClass('d-none')
+  }else{
+    $('.logo').removeClass('d-none')
+    $('.noshow368').removeClass('d-none')
+  }
+}) 
 
 
 

@@ -12,6 +12,8 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const flash = require('express-flash')
 const accountRouter = require('./routers/accountRouter')
+const messageRouter = require('./routers/messageRouter')
+const roomRouter = require('./routers/roomRouter')
 const app = express();
 
 // Set views engine
@@ -24,8 +26,7 @@ app.use(cookieParser())
 app.use(session({
     secret: process.env.APP_SECRET,
     resave: false,
-    saveUninitialized: true,
-    
+    saveUninitialized: true, 
 }))
 app.use(express.json());
 app.use(bodyParser.json())
@@ -35,6 +36,8 @@ app.use(flash())
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/',accountRouter)
+app.use('/message', messageRouter)
+app.use('/room', roomRouter)
 
 // app.get('/', (req, res)=>{
 //     res.render('login')
@@ -42,9 +45,9 @@ app.use('/',accountRouter)
 // app.use('/login', (req, res) =>{
 //     res.render('login')
 // })
-app.use('/profile', (req, res) =>{
-    res.render('profile')
-})
+// app.use('/profile', (req, res) =>{
+//     res.render('profile')
+// })
 // app.use('/index', (req, res) =>{
 //     res.render('index')
 // })
