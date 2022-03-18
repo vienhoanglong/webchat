@@ -11,8 +11,8 @@ const userSchema = new Schema({
     status: {
         type: String,
         default: "offline",
-      },
-});
+    },
+}, {timestamps: true});
 
 
 const User =  mongoose.model('User', userSchema)

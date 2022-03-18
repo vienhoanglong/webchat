@@ -14,6 +14,7 @@ const flash = require('express-flash')
 const accountRouter = require('./routers/accountRouter')
 const messageRouter = require('./routers/messageRouter')
 const roomRouter = require('./routers/roomRouter')
+const friendRouter = require('./routers/friendRouter')
 const app = express();
 
 // Set views engine
@@ -38,6 +39,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/',accountRouter)
 app.use('/message', messageRouter)
 app.use('/room', roomRouter)
+app.use('/friend', friendRouter)
 
 // app.get('/', (req, res)=>{
 //     res.render('login')
