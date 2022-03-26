@@ -1,4 +1,6 @@
 const buttonEmoji = document.querySelector('#btn-emoji');
+let btnClose = document.querySelectorAll('.w-close')
+let btnCloseE = document.querySelectorAll('.e-close')
 
 const picker = new EmojiButton();
 picker.on('emoji', emoji => {
@@ -210,8 +212,48 @@ $(window).resize(function(){
     $('.logo').removeClass('d-none')
     $('.noshow368').removeClass('d-none')
   }
-}) 
-
-
-
-
+})
+//
+$('#submit-work').click(function(){
+  let input_work = $('#input-work').val()
+  if(input_work != ''){
+    $('#ul-work').append(`
+        <li class="badge bg-success fs-6 fw-normal mb-1">
+          ${input_work}
+          <i class="fa-solid fa-xmark w-close"></i>
+        </li>
+    `)
+    btnClose =  document.querySelectorAll('.w-close')
+    $('#input-work').val('')
+    $('#err-work').html('')
+  }else{
+    $('#err-work').html('Work not empty')
+  }
+})
+document.getElementById("ul-work").addEventListener("click",e=> {
+  if(e.target.classList.contains("w-close")){
+    e.target.parentElement.remove()
+  }
+})
+// 
+$('#submit-education').click(function(){
+  let input_education = $('#input-education').val()
+  if(input_education != ''){
+    $('#ul-education').append(`
+        <li class="badge bg-success fs-6 fw-normal mb-1">
+          ${input_education}
+          <i class="fa-solid fa-xmark e-close"></i>
+        </li>
+    `)
+    btnCloseE =  document.querySelectorAll('.e-close')
+    $('#input-education').val('')
+    $('#err-education').html('')
+  }else{
+    $('#err-education').html('Education not empty')
+  }
+})
+document.getElementById("ul-education").addEventListener("click",e=> {
+  if(e.target.classList.contains("e-close")){
+    e.target.parentElement.remove()
+  }
+})

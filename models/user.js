@@ -8,10 +8,6 @@ const userSchema = new Schema({
     email: String,
     password: String,
     image: {type:String, default: "avatar.png"},
-    status: {
-        type: String,
-        default: "offline",
-    },
 }, {timestamps: true});
 
 

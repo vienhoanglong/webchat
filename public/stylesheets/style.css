@@ -174,7 +174,7 @@ img.logo {
 }
 .chat-content {
   overflow-y: auto;
-  max-height: 69vh;
+  max-height: 73vh;
 }
 .message-content {
   padding: 0.75rem;
@@ -184,7 +184,7 @@ img.logo {
   border-radius: 8px;
 }
 .chat-content > div {
-  width: 85%;
+  width: 65%;
 }
 
 .btn-more:hover {
@@ -829,4 +829,17 @@ form.forgot {
 .container-change {
   padding-right: 0.75rem !important;
 }
-/* Responsive */
+.e-close {
+  cursor: pointer;
+  padding: 0 4px;
+}
+.e-close:hover {
+  background-color: red;
+}
+.w-close {
+  cursor: pointer;
+  padding: 0 4px;
+}
+.w-close:hover {
+  background-color: red;
+}
