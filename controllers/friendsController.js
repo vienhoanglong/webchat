@@ -1,5 +1,6 @@
 const User = require('../models/user')
 const Friend = require('../models/friends')
+const Room = require('../models/room')
 
 // 0: Friend request
 // 1: Accept
@@ -100,6 +101,11 @@ const acceptFriend = async(req, res) =>{
         let msg
         if(isAccept == '1'){
             msg = 'Kết bạn thành công!'
+            //Create new room
+            const newRoom = new Room({
+                members:[req.body.sender, req.body.receiver]
+            })
+            newRoom.save()
         }else{
             msg = 'Từ chối kết bạn thành công'
         }
@@ -146,11 +152,12 @@ const unfriend = async(req, res) =>{
         res.status(500).json(err)
     }
 }
-const listfriend = async(req, res) =>{
+const listfriend = async(req, res, next) =>{
     try{
         let user = req.body.userId
         let requested = await Friend.find({sender: user, status: '1' }).distinct('receiver')
-        let users = await User.find().where('_id').in(requested).populate('image').exec()
+        let accepted = await Friend.find({receiver: user, status: "1" }).distinct('sender')
+        let users = await User.find().where('_id').in(requested.concat(accepted)).populate('image').populate('image').exec()
         res.status(200).json({
             message: 'Danh sách bạn bè',
             data:{

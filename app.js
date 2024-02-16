@@ -47,12 +47,12 @@ app.use('/friend', friendRouter)
 // app.use('/login', (req, res) =>{
 //     res.render('login')
 // })
-app.use('/profile', (req, res) =>{
-    res.render('profile')
-})
-// app.use('/index', (req, res) =>{
-//     res.render('index')
+// app.use('/profile', (req, res) =>{
+//     res.render('profile')
 // })
+app.use('/index', (req, res) =>{
+    res.render('index')
+})
 
 
 //running

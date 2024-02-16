@@ -1,3 +1,4 @@
+
 const buttonEmoji = document.querySelector('#btn-emoji');
 let btnClose = document.querySelectorAll('.w-close')
 let btnCloseE = document.querySelectorAll('.e-close')
@@ -230,11 +231,15 @@ $('#submit-work').click(function(){
     $('#err-work').html('Work not empty')
   }
 })
-document.getElementById("ul-work").addEventListener("click",e=> {
-  if(e.target.classList.contains("w-close")){
-    e.target.parentElement.remove()
-  }
-})
+
+let ul_work=document.getElementById("ul-work")
+if(ul_work){
+  ul_work.addEventListener("click",e=> {
+    if(e.target.classList.contains("w-close")){
+      e.target.parentElement.remove()
+    }
+  })
+}
 // 
 $('#submit-education').click(function(){
   let input_education = $('#input-education').val()
@@ -252,8 +257,65 @@ $('#submit-education').click(function(){
     $('#err-education').html('Education not empty')
   }
 })
-document.getElementById("ul-education").addEventListener("click",e=> {
-  if(e.target.classList.contains("e-close")){
-    e.target.parentElement.remove()
+let ul_education = document.getElementById("ul-education")
+if(ul_education){
+  ul_education.addEventListener("click",e=> {
+    if(e.target.classList.contains("e-close")){
+      e.target.parentElement.remove()
+    }
+  })
+}
+//Show img when upload
+let imgInp = document.querySelectorAll('imgInp')
+if(imgInp){
+  imgInp.onchange = e => {
+    const [file] = imgInp.files;
+    if (file) {
+        img_preview.src = URL.createObjectURL(file);
+    }
   }
-})
+}
+// Khi nhấn vào một trang khung chat của bạn bè thì hiển thị bạn bè đó
+
+//Load message in room chat 
+//window.history.pushState xử dụng để đưa đường dẫn lên url trình duyệt
+
+let roomChat = document.querySelector('#room-chat')
+if(roomChat){
+  roomChat.addEventListener('click', e =>{
+    if(!e.target.classList.contains('link-friend')){
+      const element = e.target.parentElement
+      // let tagA = element.closest('a').classList.toggle('no-click')
+      let href = element.closest('a').getAttribute('href')
+      console.log(href)
+      $.ajax({
+        //Get room chat
+        url: href,
+        type: 'get',
+        success: function(response){
+          console.log(response)
+          let link = response._id
+          console.log(link)
+          $.ajax({
+            url:`/message/${response._id}`,
+            type: 'get',
+            success: function(response){
+              window.history.pushState(0,0,`/message/${link}`)
+              window.location.href = `/message/${link}`
+            },
+            error: function(err){
+              console.log(err)
+            }
+          })
+        },
+        error: function(err){
+          console.log(err)
+        }
+      })
+    }
+    e.preventDefault()
+  }, false)
+  
+}
+
+

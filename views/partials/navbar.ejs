@@ -5,9 +5,35 @@
                 <img src="/images/logo/logo.svg" alt="message chat" class="logo">
             </a>
             <ul class="navbar-nav navbar-row mx-2">
-                <img class="img-profile rounded-circle shadow border-1" src="/images/avatar.png">
+                <div class="dropdown">
+                    <div class="mt-3" id="dropdownNotification" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="position-absolute translate-middle start-100 bg-danger rounded-3 fw-bold">
+                            9+
+                        </span>
+                        <i class="fa-lg fa-solid fa-bell text-color"></i>
+                    </div>
+                    <ul class="dropdown-menu bg-message w-notification" aria-labelledby="dropdownNotification">
+                        <h6 class="text-color fw-bold p-2 border-bottom">Notifications</h6>
+                        <li>
+                          <a class="dropdown-item text-color">
+                            <img src="/images/avatar.png" class="rounded img-notification" alt="">
+                            <span class="text-wrap">
+                                <strong class="me-1">Nguyen Cong Hau</strong>sent a friend request<br>
+                                <div class="d-flex justify-content-between">
+                                    <smal class="text-primary">11 min ago</smal>
+                                    <div>
+                                        <span class="text-success p-1 i-notification" title="Accept"><i class="fa-lg fa-solid fa-circle-check"></i></span>
+                                        <span class="text-danger p-1 i-notification" title="Reject"><i class="fa-lg fa-solid fa-circle-xmark"></i></span>
+                                    </div>
+                                </div>
+                            </span>
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+                <img class="img-profile rounded-circle shadow border-1 ms-4" src="/images/<%=user.image%> ">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle fw-bold text-color" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vien Hoang Long </a>
+                    <a class="nav-link dropdown-toggle fw-bold text-color" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <%=user.fullname%>  </a>
                    
                     <ul class="dropdown-menu dropdown-menu-end bg-message" aria-labelledby="navbarDropdown">
                         <li>

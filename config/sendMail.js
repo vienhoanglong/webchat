@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer')
 const sendMail = async(email, subject, text) =>{
     const transporter =  nodemailer.createTransport({ 
-        service: process.env.SERVICE,
+        host: 'smtp.ethereal.email',
+        port: 587,
         auth: {
             user: process.env.USER,
             pass: process.env.PASS
@@ -15,7 +16,7 @@ const sendMail = async(email, subject, text) =>{
     }
     transporter.sendMail(mainOptions, function(err, info){
         if (err) {
-            console.log("email not sent");
+            console.log("email not sent", err);
         } else {
             console.log('Message sent: ' +  info.response);
         }

@@ -174,7 +174,7 @@ img.logo {
 }
 .chat-content {
   overflow-y: auto;
-  max-height: 73vh;
+  min-height: 83vh;
 }
 .message-content {
   padding: 0.75rem;
@@ -842,4 +842,25 @@ form.forgot {
 }
 .w-close:hover {
   background-color: red;
+}
+.img-profile-edit {
+  width: 120px;
+  height: 120px;
+}
+.img-notification {
+  width: 30px;
+  height: 30px;
+}
+.w-notification {
+  width: 250px;
+}
+.i-notification {
+  cursor: pointer;
+}
+.i-notification:hover {
+  color: var(--blue-color) !important;
+}
+.no-click{
+  display: block;
+  pointer-events: none;
 }

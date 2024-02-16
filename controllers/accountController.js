@@ -4,14 +4,18 @@ const passwordHash = require('password-hash')
 const {validationResult} = require('express-validator')
 const sendMail = require('../config/sendMail')
 const crypto = require("crypto")
+const Friend = require('../models/friends')
 //getIndex
 const getIndex = async (req, res)=>{
-    // let id = req.session.passport.user
+    let username = req.cookies.username
     // let user = await User.findById(id)
     // res.cookie('idGmail',id,{ maxAge: 900000, httpOnly: true });
-    // // console.log(user)
-    // // console.log("cookie",req.cookies.idGmail)
-    res.render('index');
+    let user = await User.findOne({username: username })
+    let requested = await Friend.find({sender: user._id, status: '1' }).distinct('receiver')
+    let accepted = await Friend.find({receiver: user._id, status: "1" }).distinct('sender')
+    let friends = await User.find().where('_id').in(requested.concat(accepted)).populate('image').populate('image').exec()
+    // console.log(friends)
+    res.render('index',{user, friends})
 }
 const getLogin = (req, res) =>{
     res.render('login')
@@ -94,6 +98,7 @@ const postForgot = async(req, res) =>{
         }
         // create link
         const link = `${process.env.BASE_URL}/change/${user._id}/${token.token}`
+        console.log(link)
         // Send mail and link reset password
         await sendMail(user.email,'Forgot password', link)
         req.flash('msgSuccess','Yêu cầu đã gửi qua email của bạn')
